@@ -5,8 +5,11 @@
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    * {
+      box-sizing: border-box;
+    }
   	body {
-  		max-width:600px;
+  		max-width: 600px;
   		margin: 0 auto;
   	}
   	div {
@@ -26,6 +29,10 @@
 			border-radius: 50px;
 			padding: 20px 15px;
   	}
+    #button:hover {
+      background-color: #222;
+      cursor: pointer;
+    }
   	#button-text {
   		font-size: 1.5em;
   		color: #FFF;
@@ -56,21 +63,37 @@
 	<div>
 		<img id="banner" src="banner.png">
 	</div>
+
 	<div>
 		<p id="title">Get latest News from Samsung Internet</p>
 		<img id="logo" src="silogo.png">
 		<p id="points">Earn 100 Points</p>
 		<p id="details">Get News on the home page & sign-up to News alerts</p>
 	</div>
+
 	<div>
 		<p id="extra">By signing up, you accept News Push
 			<a href="https://developer.samsung.com/internet/terms-of-service-us">T&C</a>
-		 and 
+		 and
 			<a href="https://developer.samsung.com/internet/privacy-policy-us">Privacy Policy</a>
 		</p>
 	</div>
-	<div id="button" onclick="window.Rewards.setHomepageAsNewsFeed()">
+
+	<div id="button">
 		<p id="button-text">Sign me up!</p>
 	</div>
+
+<script>
+'use strict';
+
+let btn = document.getElementById('button');
+
+btn.addEventListener('click', function(e){
+  console.log('Sign Up button clicked');
+  if (window.Rewards) {
+    window.Rewards.setHomepageAsNewsFeed();
+  }
+});
+</script>
 </body>
 </html>
