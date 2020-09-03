@@ -187,6 +187,9 @@ const REDEEM_URL = 'https://www.samsungrewards.com/redeem/';
 const NEWTAB_URL = 'internet://newtab/';
 
 let testIneligible = false;
+if (location.search === '?ineligible') {
+  testIneligible = true;
+}
 
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
