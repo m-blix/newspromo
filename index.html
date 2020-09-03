@@ -189,8 +189,18 @@ redeemBtn.addEventListener('click', function(e){
   window.location.href = REDEEM_URL;
 });
 
+modal.addEventListener('click', function(e){
+  if (e.target.tagName === 'DIV' && e.target.id === 'modal') {
+    console.log('click modal outer');
+  }
+});
+
 function showModal() {
   modal.style.display = 'block';
+}
+
+function hideModal() {
+  modal.style.display = 'none';
 }
 </script>
 </body>
