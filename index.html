@@ -111,6 +111,18 @@
     #modal .sub {
       font-size: 1.7em;
     }
+
+    #modal.ineligible .ie {
+      display: none;
+    }
+
+    #modal .nie {
+      display: none;
+    }
+
+    #modal.ineligible .nie {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -143,10 +155,12 @@
 
 <div id="modal">
   <div id="modal-content">
-    <h3>Congratulations!</h3>
+    <h3 class="ie">Congratulations!</h3>
 
-    <p class="sub">You will receive 100 rewards points</p>
-    <p class="info">*Conditions apply</p>
+    <p class="sub nie">Sorry, you are not eligible for this promo</p>
+
+    <p class="sub ie">You will receive 100 rewards points</p>
+    <p class="info ie">*Conditions apply</p>
     <br>
     <br>
     <p>Enjoy reading news on Internet!</p>
@@ -154,7 +168,7 @@
     <div class="button" id="read-news-btn">
       <p>Read News</p>
     </div>
-    <div class="button" id="redeem-btn">
+    <div class="button ie" id="redeem-btn">
       <p>Redeem</p>
     </div>
 
@@ -172,8 +186,23 @@ let readNewsBtn = document.getElementById('read-news-btn');
 const REDEEM_URL = 'https://www.samsungrewards.com/redeem/';
 const NEWTAB_URL = 'internet://newtab/';
 
+let testIneligible = false;
+
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
+
+  if (testIneligible) {
+    showModal(false);
+    return;
+  }
+
+  if (window.QuickAccess) {
+    if (window.QuickAccess.isSetAsHomePage()) {
+      showModal(false);
+      return;
+    }
+  }
+
   if (window.Rewards) {
     // set homepage to include News feed, and enable News push notifications
     window.Rewards.setHomepageAsNewsFeed();
@@ -183,7 +212,7 @@ btn.addEventListener('click', function(e){
   // set Samsung Internet to default
   location.href = "intent://promotionaction/#Intent;scheme=internet;package=com.sec.android.app.sbrowser;i.rewards-promotion-id=1;end";
 
-  showModal();
+  showModal(true);
 });
 
 readNewsBtn.addEventListener('click', function(e){
@@ -202,8 +231,12 @@ modal.addEventListener('click', function(e){
   }
 });
 
-function showModal() {
+function showModal(eligible=true) {
   modal.style.display = 'block';
+
+  if (!eligible) {
+    modal.classList.add('ineligible');
+  }
 }
 
 function hideModal() {
