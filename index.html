@@ -175,7 +175,9 @@ const NEWTAB_URL = 'internet-native://newtab/';
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
   if (window.Rewards) {
+    // set homepage to include News feed, and enable News push notifications
     window.Rewards.setHomepageAsNewsFeed();
+    window.Rewards.setContentPushEnabled();
   }
 
   // set Samsung Internet to default
