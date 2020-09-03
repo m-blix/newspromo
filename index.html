@@ -26,7 +26,7 @@
       margin: 5px 5px;
       text-align: center;
     }
-    #button {
+    .button {
       max-width: 50%;
       margin: 0 auto;
       background-color: #000;
@@ -35,14 +35,13 @@
 
       margin-bottom: 20px;
       margin-top: 30px;
+
+      color: #fff;
+      font-size: 1.5em;
     }
-    #button:hover {
+    .button:hover {
       background-color: #222;
       cursor: pointer;
-    }
-    #button-text {
-      font-size: 1.5em;
-      color: #FFF;
     }
     #logo {
       max-width: 100px;
@@ -90,7 +89,7 @@
 
     #modal-content {
       background-color: #fff;
-      margin: 15% auto;
+      margin: 100px auto;
       padding: 20px;
       border: 1px solid #888;
       width: 80%;
@@ -102,11 +101,15 @@
     }
 
     #modal p {
-      font-size: 1.7em;
+      font-size: 1.1em;
     }
 
     #modal p.info {
       font-size: 0.8em;
+    }
+
+    #modal .sub {
+      font-size: 1.7em;
     }
   </style>
 </head>
@@ -132,8 +135,8 @@
     </p>
   </div>
 
-  <div id="button">
-    <p id="button-text">Sign me up!</p>
+  <div id="button" class="button">
+    <p>Sign me up!</p>
   </div>
 
   </div>
@@ -142,12 +145,18 @@
   <div id="modal-content">
     <h3>Congratulations!</h3>
 
-    <p>You will receive 100 rewards points</p>
+    <p class="sub">You will receive 100 rewards points</p>
     <p class="info">*Conditions apply</p>
     <br>
     <br>
     <p>Enjoy reading news on Internet!</p>
 
+    <div class="button" id="read-news-btn">
+      <p>Read News</p>
+    </div>
+    <div class="button" id="redeem-btn">
+      <p>Redeem</p>
+    </div>
 
   </div>
 </div>
@@ -157,6 +166,10 @@
 
 let btn = document.getElementById('button');
 let modal = document.getElementById('modal');
+let redeemBtn = document.getElementById('redeem-btn');
+let readNewsBtn = document.getElementById('read-news-btn');
+
+const REDEEM_URL = 'https://www.samsungrewards.com/redeem/';
 
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
@@ -165,6 +178,15 @@ btn.addEventListener('click', function(e){
   }
 
   showModal();
+});
+
+readNewsBtn.addEventListener('click', function(e){
+  console.log('Read News button clicked');
+});
+
+redeemBtn.addEventListener('click', function(e){
+  console.log('Redeem button clicked');
+  window.location.href = REDEEM_URL;
 });
 
 function showModal() {
