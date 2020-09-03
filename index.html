@@ -170,6 +170,7 @@ let redeemBtn = document.getElementById('redeem-btn');
 let readNewsBtn = document.getElementById('read-news-btn');
 
 const REDEEM_URL = 'https://www.samsungrewards.com/redeem/';
+const NEWTAB_URL = 'internet-native://newtab/';
 
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
@@ -185,6 +186,7 @@ btn.addEventListener('click', function(e){
 
 readNewsBtn.addEventListener('click', function(e){
   console.log('Read News button clicked');
+  window.location.href = NEWTAB_URL;
 });
 
 redeemBtn.addEventListener('click', function(e){
