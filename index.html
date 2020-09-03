@@ -8,19 +8,23 @@
     * {
       box-sizing: border-box;
     }
-    body {
-      max-width: 600px;
+    body, html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      width: 600px;
       margin: 0 auto;
     }
     div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin:15px 15px;
+      margin: 15px 0px;
     }
     p {
-      font-family: arial;
+      font-family: arial, sans-serif;
       margin: 5px 5px;
+      text-align: center;
     }
     #button {
       max-width: 50%;
@@ -28,6 +32,9 @@
       background-color: #000;
       border-radius: 50px;
       padding: 20px 15px;
+
+      margin-bottom: 20px;
+      margin-top: 30px;
     }
     #button:hover {
       background-color: #222;
@@ -39,27 +46,37 @@
     }
     #logo {
       max-width: 100px;
-      margin:20px 20px;
+      display: flex;
+      justify-content: center;
+      margin: 24px auto;
     }
     #title {
-      font-size:1.5em;
-      font-weight:600;
+      font-size: 2.5em;
+      font-weight: 600;
+      padding: 0 20px;
     }
     #points {
-      font-size: 1.2em;
+      font-size: 1.8em;
       color: #706cf5;
       font-weight: 600;
     }
     #details {
-      font-size: 1.2em;
+      font-size: 1.8em;
       font-weight: 500;
     }
     #extra {
-      font-size:0.6em;
+      font-size: 0.8em;
+    }
+    #banner {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto;
     }
   </style>
 </head>
 <body>
+  <div id="container">
+
   <div>
     <img id="banner" src="banner.png">
   </div>
@@ -68,7 +85,7 @@
     <p id="title">Get latest News from Samsung Internet</p>
     <img id="logo" src="silogo.png">
     <p id="points">Earn 100 Points</p>
-    <p id="details">Get News on the home page & sign-up to News alerts</p>
+    <p id="details">Switch to Samsung Internet with News &amp; News Alerts</p>
   </div>
 
   <div>
@@ -81,6 +98,8 @@
 
   <div id="button">
     <p id="button-text">Sign me up!</p>
+  </div>
+
   </div>
 
 <script>
