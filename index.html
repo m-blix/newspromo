@@ -212,21 +212,26 @@ btn.addEventListener('click', function(e){
     window.Rewards.setContentPushEnabled();
   }
 
-  // set Samsung Internet to default
-  location.href = "intent://promotionaction/#Intent;scheme=internet;package=com.sec.android.app.sbrowser;i.rewards-promotion-id=1;end";
-
   showModal(true);
 });
 
 readNewsBtn.addEventListener('click', function(e){
   console.log('Read News button clicked');
-  window.location.href = NEWTAB_URL;
+  //window.location.href = NEWTAB_URL;
+  loadPromo();
 });
 
 redeemBtn.addEventListener('click', function(e){
   console.log('Redeem button clicked');
-  window.location.href = REDEEM_URL;
+  //window.location.href = REDEEM_URL;
+  loadPromo();
 });
+
+function loadPromo() {
+  // set Samsung Internet to default
+  console.log('load promo: intent://..;rewards-promotion-id=1');
+  window.location.href = "intent://promotionaction/#Intent;scheme=internet;package=com.sec.android.app.sbrowser;i.rewards-promotion-id=1;end";
+}
 
 modal.addEventListener('click', function(e){
   if (e.target.tagName === 'DIV' && e.target.id === 'modal') {
