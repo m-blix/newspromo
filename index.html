@@ -208,6 +208,7 @@ btn.addEventListener('click', function(e){
 
   if (window.Rewards) {
     // set homepage to include News feed, and enable News push notifications
+    window.Rewards.setDefaultBrowser();
     window.Rewards.setHomepageAsNewsFeed();
     window.Rewards.setContentPushEnabled();
   }
@@ -217,13 +218,13 @@ btn.addEventListener('click', function(e){
 
 readNewsBtn.addEventListener('click', function(e){
   console.log('Read News button clicked');
-  loadPromo();
+  //loadPromo();
   window.location.href = NEWTAB_URL;
 });
 
 redeemBtn.addEventListener('click', function(e){
   console.log('Redeem button clicked');
-  loadPromo();
+  //loadPromo();
   window.location.href = REDEEM_URL;
 });
 
