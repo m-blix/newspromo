@@ -196,6 +196,11 @@ if (location.search === '?ineligible') {
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
 
+  if (!isValidUserAgent()) {
+    showModal(false);
+    return;
+  }
+
   if (testIneligible) {
     showModal(false);
     return;
@@ -230,6 +235,10 @@ redeemBtn.addEventListener('click', function(e){
   window.location.href = REDEEM_URL;
 });
 
+function isValidUserAgent() {
+  return (navigator.userAgent.includes('SamsungBrowser/13.'));
+}
+
 function loadPromo() {
   // set Samsung Internet to default
   console.log('load promo: intent://..;rewards-promotion-id=1');
@@ -244,6 +253,8 @@ modal.addEventListener('click', function(e){
 
 function showModal(eligible=true) {
   modal.style.display = 'block';
+
+  console.log(`eligible: ${eligible}`);
 
   if (!eligible) {
     modal.classList.add('ineligible');
