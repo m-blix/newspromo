@@ -4,27 +4,36 @@
   <meta charset="utf-8">
   <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Samsung Internet News Promotion</title>
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+        margin: 0 !important;
+        font-family: sans-serif;
     }
-    body, html {
+    img.img-rewards {
       width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: arial, sans-serif;
+      height: auto;
+      display: block;
+      float: left;
+      user-select: none;
     }
-    #container {
-      max-width: 600px;
-      margin: 0 auto;
+    .rewards-button {
+      width: 100%;
+      display: block;
+      background: #000;
+      bottom: 0;
+      position: fixed;
+      box-sizing: border-box;
+      user-select: none;
+      visibility: visible;
+      backface-visibility: hidden;
     }
     div {
-      margin: 15px 0px;
+      margin: 0px 8%;
     }
     p {
-      margin: 5px 5px;
-      text-align: center;
+      margin: 5px 0px;
+      text-align: left;
     }
     .button {
       max-width: 75%;
@@ -44,7 +53,7 @@
       cursor: pointer;
     }
     #logo {
-      max-width: 100px;
+      max-width: 600px;
       display: flex;
       justify-content: center;
       margin: 24px auto;
@@ -54,17 +63,8 @@
       font-weight: 600;
       padding: 0 20px;
     }
-    #points {
-      font-size: 1.8em;
-      color: #706cf5;
-      font-weight: 600;
-    }
-    #details {
-      font-size: 1.8em;
-      font-weight: 500;
-    }
     #extra {
-      font-size: 0.8em;
+      font-size: 11px;
     }
     #banner {
       display: flex;
@@ -125,62 +125,53 @@
     #modal.ineligible .nie {
       display: block;
     }
+
+    a {
+      color: rgb(27, 139, 223);
+    }
   </style>
 </head>
 <body>
-  <div id="container">
+  <img class="img-rewards" src="banner.jpg">
+  <img class="img-rewards" src="description.png">
 
   <div>
-    <img id="banner" src="banner.png">
-  </div>
-
-  <div>
-    <p id="title">Get latest News from Samsung Internet</p>
-    <img id="logo" src="silogo.png">
-    <p id="points">Earn 100 Points</p>
-    <p id="details">Switch to Samsung Internet with News &amp; News Alerts</p>
-  </div>
-
-  <div>
-    <p id="extra">By signing up, you accept News Push
-      <a href="https://developer.samsung.com/internet/terms-of-service-us">T&C</a>
-     and
+    <p id="extra">
+      <a href="https://developer.samsung.com/internet/terms-of-service-us">Terms and Conditions</a>
+     apply. See
       <a href="https://developer.samsung.com/internet/privacy-policy-us">Privacy Policy</a>
     </p>
   </div>
 
-  <div id="button" class="button">
-    <p>Sign me up!</p>
-  </div>
+  <img class="img-rewards" src="empty_button_area.png">
+  <a id="actionBtn" class="rewards-button"><img class="img-rewards" src="CTA.jpg"></a>
 
-  </div>
+  <div id="modal">
+    <div id="modal-content">
+      <h3 class="ie">Congratulations!</h3>
 
-<div id="modal">
-  <div id="modal-content">
-    <h3 class="ie">Congratulations!</h3>
+      <p class="sub nie">Sorry, you are not eligible for this promo</p>
 
-    <p class="sub nie">Sorry, you are not eligible for this promo</p>
+      <p class="sub ie">You will receive 100 rewards points</p>
+      <p class="info ie">*Conditions apply</p>
+      <br>
+      <br>
+      <p>Enjoy reading news on Internet!</p>
 
-    <p class="sub ie">You will receive 100 rewards points</p>
-    <p class="info ie">*Conditions apply</p>
-    <br>
-    <br>
-    <p>Enjoy reading news on Internet!</p>
+      <div class="button" id="read-news-btn">
+        <p>Read News</p>
+      </div>
+      <div class="button ie" id="redeem-btn">
+        <p>Redeem</p>
+      </div>
 
-    <div class="button" id="read-news-btn">
-      <p>Read News</p>
     </div>
-    <div class="button ie" id="redeem-btn">
-      <p>Redeem</p>
-    </div>
-
   </div>
-</div>
 
 <script>
 'use strict';
 
-let btn = document.getElementById('button');
+let btn = document.getElementById('actionBtn');
 let modal = document.getElementById('modal');
 let redeemBtn = document.getElementById('redeem-btn');
 let readNewsBtn = document.getElementById('read-news-btn');
@@ -196,54 +187,41 @@ if (location.search === '?ineligible') {
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
 
-  if (!isValidUserAgent()) {
-    showModal(false);
-    return;
-  }
-
-  if (testIneligible) {
-    showModal(false);
-    return;
-  }
 
   if (window.QuickAccess) {
+    // if home page set then show ineligible page
     if (window.QuickAccess.isSetAsHomePage()) {
-      showModal(false);
+      setAll();
+      showIneligible();
       return;
     }
   }
+  // if home page is not set show congrats page
+  setAll();
+  showModal();
+});
 
+function setAll() {
   if (window.Rewards) {
-    // set homepage to include News feed, and enable News push notifications
-    window.Rewards.setDefaultBrowser();
     window.Rewards.setHomepageAsNewsFeed();
     window.Rewards.setContentPushEnabled();
+    window.Rewards.setDefaultBrowser();
   }
-
-  showModal(true);
-});
-
-readNewsBtn.addEventListener('click', function(e){
-  console.log('Read News button clicked');
-  //loadPromo();
-  window.location.href = NEWTAB_URL;
-});
-
-redeemBtn.addEventListener('click', function(e){
-  console.log('Redeem button clicked');
-  //loadPromo();
-  window.location.href = REDEEM_URL;
-});
+}
 
 function isValidUserAgent() {
   return (navigator.userAgent.includes('SamsungBrowser/13.'));
 }
 
-function loadPromo() {
-  // set Samsung Internet to default
-  console.log('load promo: intent://..;rewards-promotion-id=1');
-  window.location.href = "intent://promotionaction/#Intent;scheme=internet;package=com.sec.android.app.sbrowser;i.rewards-promotion-id=1;end";
-}
+readNewsBtn.addEventListener('click', function(e){
+  console.log('Read News button clicked');
+  window.location.href = NEWTAB_URL;
+});
+
+redeemBtn.addEventListener('click', function(e){
+  console.log('Redeem button clicked');
+  window.location.href = REDEEM_URL;
+});
 
 modal.addEventListener('click', function(e){
   if (e.target.tagName === 'DIV' && e.target.id === 'modal') {
@@ -251,19 +229,14 @@ modal.addEventListener('click', function(e){
   }
 });
 
-function showModal(eligible=true) {
+function showModal() {
   modal.style.display = 'block';
-
-  console.log(`eligible: ${eligible}`);
-
-  if (!eligible) {
-    modal.classList.add('ineligible');
-  }
 }
 
-function hideModal() {
-  modal.style.display = 'none';
+function showIneligible() {
+  modal.style.display = 'block';
 }
+
 </script>
 </body>
 </html>
