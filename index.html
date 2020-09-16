@@ -179,14 +179,31 @@ let readNewsBtn = document.getElementById('read-news-btn');
 const REDEEM_URL = 'https://www.samsungrewards.com/redeem/';
 const NEWTAB_URL = 'https://quickaccess.internet.apps.samsung.com/?cc=us'; //'internet://newtab/';
 
-let testIneligible = false;
-if (location.search === '?ineligible') {
-  testIneligible = true;
+let eligible = true;
+if (location.search === '?eligible=0') {
+  eligible = false;
+} else if (location.search === '?eligible=1') {
+  eligible = true;
 }
+
+console.log(eligible);
 
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
 
+  if (!isValidUserAgent()) {
+    console.log('invalid user agent, only for 13.x');
+    if (!location.search.includes('eligible=1')) {
+      eligible = false;
+    }
+  } else {
+    console.log('valid user agent');
+  }
+
+  if (!eligible) {
+    showIneligible();
+    return;
+  }
 
   if (window.QuickAccess) {
     // if home page set then show ineligible page
@@ -230,10 +247,12 @@ modal.addEventListener('click', function(e){
 });
 
 function showModal() {
+  console.log('show eligible modal');
   modal.style.display = 'block';
 }
 
 function showIneligible() {
+  console.log('show INeligible modal');
   modal.style.display = 'block';
 }
 
