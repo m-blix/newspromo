@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Samsung Internet News Promotion</title>
   <style>
+@font-face {
+  font-family: 'SamsungOne';
+  src: url(SamsungOne-400.woff2);
+
+}
+
     body {
         margin: 0 !important;
-        font-family: sans-serif;
+        font-family: 'SamsungOne', sans-serif;
     }
     img.img-rewards {
       width: 100%;
@@ -91,9 +97,27 @@
     #modal-content {
       background-color: #fff;
       margin: 100px auto;
-      padding: 20px;
-      border: 1px solid #888;
+      padding: 40px 20px;
+      border: 0px solid #888;
+      border-radius: 16px;
       width: 80%;
+      text-align: center;
+    }
+
+    #modal-content .button {
+      border: 1px solid #000;
+      background-color: #fff;
+      color: #000;
+      text-transform: uppercase;
+      font-size: 16px;
+      padding: 6px 0px;
+      font-weight: bold;
+      margin-bottom: 2px;
+      margin-top: 14px;
+    }
+
+    #modal-content p {
+      text-align: center;
     }
 
     #modal h3 {
@@ -148,15 +172,13 @@
 
   <div id="modal">
     <div id="modal-content">
-      <h3 class="ie">Congratulations!</h3>
+      <h3 class="ie">Congrats, you've scored 100 Samsung Rewards points!</h3>
 
-      <p class="sub nie">Sorry, you are not eligible for this promo</p>
+      <h3 class="nie">We're sorry, it looks like you're not eligible for the Rewards points.</h3>
 
-      <p class="sub ie">You will receive 100 rewards points</p>
-      <p class="info ie">*Conditions apply</p>
-      <br>
-      <br>
-      <p>Enjoy reading news on Internet!</p>
+      <p class="ie">You can redeem and use them at Galaxy Store.</p>
+      <p class="ie">Enjoy Samsung Internet News!</p>
+      <p class="nie">But you can still enjoy Samsung Internet News.</p>
 
       <div class="button" id="read-news-btn">
         <p>Read News</p>
@@ -254,6 +276,8 @@ function showModal() {
 function showIneligible() {
   console.log('show INeligible modal');
   modal.style.display = 'block';
+
+  modal.classList.add('ineligible');
 }
 
 </script>
