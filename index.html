@@ -59,7 +59,7 @@
       padding: 0 20px;
     }
     #extra {
-      font-size: 11px;
+      font-size: 0.5em;
     }
     #banner {
       display: flex;
@@ -167,13 +167,13 @@
   <div>
     <p id="extra">
       <a href="https://developer.samsung.com/internet/terms-of-service-us">Terms and Conditions</a>
-     apply. See
+     apply. <a href="https://eprize-content.s3.amazonaws.com/samsung/Terms+%26+Rules/Samsung+Internet+Latest+News+Rewards+Offer+Terms.pdf">Promotion Terms and Conditions</a> apply. See
       <a href="https://developer.samsung.com/internet/privacy-policy-us">Privacy Policy</a>
     </p>
   </div>
 
   <img class="img-rewards" src="empty_button_area.png">
-  <a id="actionBtn" class="rewards-button"><img class="img-rewards" src="CTA.jpg"></a>
+  <a id="actionBtn" class="rewards-button"><img class="img-rewards" src="CTA.png"></a>
 
   <div id="modal">
     <div id="modal-content">
@@ -210,8 +210,8 @@ let modal = document.getElementById('modal');
 let redeemBtn = document.getElementById('redeem-btn');
 let readNewsBtn = document.getElementById('read-news-btn');
 
-const REDEEM_URL = 'https://www.samsungrewards.com/redeem/';
-const NEWTAB_URL = 'https://quickaccess.internet.apps.samsung.com/?cc=us'; //'internet://newtab/';
+const REDEEM_URL = 'samsungpay://launch?action=rewards_list&source=internet';
+const NEWTAB_URL = 'intent://open/?url=https://quickaccess.internet.apps.samsung.com/?cc=us#Intent;scheme=samsunginternet;package=com.sec.android.app.sbrowser;action=android.intent.action.VIEW;end'; //'internet://newtab/';
 
 let eligible = true;
 if (location.search === '?eligible=0') {
