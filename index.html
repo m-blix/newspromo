@@ -53,12 +53,6 @@
       background-color: #222;
       cursor: pointer;
     }
-    #logo {
-      max-width: 600px;
-      display: flex;
-      justify-content: center;
-      margin: 24px auto;
-    }
     #title {
       font-size: 2.5em;
       font-weight: 600;
@@ -231,28 +225,20 @@ console.log(eligible);
 btn.addEventListener('click', function(e){
   console.log('Sign Up button clicked');
 
-  if (!isValidUserAgent()) {
-    console.log('invalid user agent, only for 13.x');
-    if (!location.search.includes('eligible=1')) {
-      eligible = false;
-    }
-  } else {
-    console.log('valid user agent');
-  }
-
   if (!eligible) {
     showIneligible();
     return;
   }
 
-  if (window.QuickAccess) {
-    // if home page set then show ineligible page
-    if (window.QuickAccess.isSetAsHomePage()) {
-      setAll();
-      showIneligible();
-      return;
-    }
-  }
+
+  // if (window.Rewards) {
+  //   // if home page set then show ineligible page
+  //   if (window.Rewards.isSetAsHomePage()) {
+  //     setAll();
+  //     showIneligible();
+  //     return;
+  //   }
+  // }
   // if home page is not set show congrats page
   setAll();
   showModal();
@@ -262,7 +248,9 @@ function setAll() {
   if (window.Rewards) {
     window.Rewards.setHomepageAsNewsFeed();
     window.Rewards.setContentPushEnabled();
-    window.Rewards.setDefaultBrowser();
+    if (isValidUserAgent()) {
+      window.Rewards.setDefaultBrowser();
+    }
   }
 }
 
