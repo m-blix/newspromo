@@ -6,16 +6,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Samsung Internet News Promotion</title>
   <style>
-
+    * {
+      box-sizing: border-box;
+    }
+    @font-face {
+      font-family: 'SamsungOne';
+      src: url(SamsungOne-400.woff2);
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'SamsungOneBold';
+      src: url(SamsungOne-700.woff2);
+      font-weight: normal;
+    }
+    @font-face {
+      font-family: 'SamsungSharpSans';
+      src: url(SamsungSharpSansBd.woff2);
+      font-weight: normal;
+    }
     body {
-        margin: 0 !important;
-        font-family: sans-serif;
+      margin: 0 !important;
+      font-family: 'SamsungOne', sans-serif;
     }
     img.img-rewards {
       width: 100%;
       height: auto;
       display: block;
-      float: left;
       user-select: none;
     }
     .rewards-button {
@@ -24,10 +40,14 @@
       background: #000;
       bottom: 0;
       position: fixed;
-      box-sizing: border-box;
       user-select: none;
-      visibility: visible;
-      backface-visibility: hidden;
+      text-align: center;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      font-weight: bold;
+      font-family: 'SamsungOne', sans-serif;
+      font-size: 16px;
     }
     div {
       margin: 0px 8%;
@@ -53,13 +73,53 @@
       background-color: #222;
       cursor: pointer;
     }
+
+    #front {
+
+    }
+
+    #front .msg {
+      text-transform: uppercase;
+      color: #999;
+      font-weight: normal;
+      font-family: 'SamsungOneBold', sans-serif;
+      font-size: 12px;
+      margin-top: 22px;
+      margin-bottom: 12px;
+    }
+
+    #front h3 {
+      margin: 0;
+      font-size: 27px;
+      font-family: 'SamsungSharpSans', sans-serif;
+      font-weight: normal;
+      line-height: 1.2em;
+      margin-bottom: 22px;
+    }
+
+    #front p {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    #front p.main {
+      margin-bottom: 20px;
+    }
+
+    #front p.notice {
+      font-size: 8px;
+      line-height: 12px;
+    }
+
     #title {
       font-size: 2.5em;
       font-weight: 600;
       padding: 0 20px;
     }
-    #extra {
-      font-size: 0.5em;
+    #front p.extra {
+      margin-top: 10px;
+      font-size: 8px;
+      line-height: 12px;
     }
     #banner {
       display: flex;
@@ -89,19 +149,21 @@
       padding: 40px 20px;
       border: 0px solid #888;
       border-radius: 16px;
-      width: 80%;
+      width: 90%;
       text-align: center;
     }
 
     #modal-content .button {
+      border: 1px solid #000;
       background-color: #fff;
       color: #000;
       text-transform: uppercase;
       font-size: 16px;
-      padding: 4px 0px;
+      padding: 6px 0px;
       font-weight: bold;
-      margin-bottom: 0px;
-      margin-top: 0px;
+      margin-bottom: 2px;
+      margin-top: 14px;
+      border-radius: 40px;
     }
 
     #read-news-btn img, #redeem-btn img {
@@ -116,12 +178,37 @@
 
     #modal h3 {
       margin: 0;
-      font-size: 30px;
+      font-size: 26px;
       text-align: center;
+      font-family: 'SamsungSharpSans', sans-serif;
+      font-weight: 700;
+      line-height: 1.2em;
+    }
+
+    #modal .button p {
+      font-size: 17px;
+      padding: 5px 2px;
     }
 
     #modal p {
-      font-size: 1.1em;
+      font-size: 15px;
+      line-height: 18px;
+      width: 90%;
+      margin: auto;
+    }
+
+    #modal p.first {
+      margin-bottom: 20px;
+      margin-top: 4px;
+    }
+
+    #modal p.last {
+      margin-bottom: 21px;
+    }
+
+    #modal p.only {
+      margin-bottom: 20px;
+      margin-top: 20px;
     }
 
     #modal p.info {
@@ -130,6 +217,10 @@
 
     #modal .sub {
       font-size: 1.7em;
+    }
+
+    #modal .note {
+      font-size: 9px;
     }
 
     #modal.ineligible .ie {
@@ -158,45 +249,62 @@
     a {
       color: rgb(27, 139, 223);
     }
+
+    #modal h3.nie {
+      width: 84%;
+      margin: auto;
+    }
   </style>
 </head>
 <body>
   <img class="img-rewards" src="banner.jpg">
-  <img class="img-rewards" src="description.png">
 
-  <div>
-    <p id="extra">
+  <div id="front">
+    <p class="msg">opt-in and earn 100 rewards points</p>
+
+    <h3>Make the news more rewarding with 100 Rewards points</h3>
+
+    <p class="main">When you opt in to Samsung Internet News, you'll get 100 Rewards points.
+    It's that easy. Plus, enjoy curated, must-read stories - ranging from the top news to popular topics.</p>
+
+    <p class="notice">
+    Signing up opts you into Samsung Internet News push notifications. Default browser will be set to Samsung Internet, if not already. Homepage will set to Quick Access page with News feed. Samsung Account required for sign up.
+    </p>
+
+    <p class="extra">
       <a href="https://developer.samsung.com/internet/terms-of-service-us">Terms and Conditions</a>
      apply. <a href="https://eprize-content.s3.amazonaws.com/samsung/Terms+%26+Rules/Samsung+Internet+Latest+News+Rewards+Offer+Terms.pdf">Promotion Terms and Conditions</a> apply. See
       <a href="https://developer.samsung.com/internet/privacy-policy-us">Privacy Policy</a>
     </p>
   </div>
 
-  <img class="img-rewards" src="empty_button_area.png">
-  <a id="actionBtn" class="rewards-button"><img class="img-rewards" src="CTA.png"></a>
+  <div id="actionBtn" class="rewards-button">SIGN UP NOW</div>
+
+
 
   <div id="modal">
     <div id="modal-content">
       <div class="ie pimg">
-        <img src="popups/popup-1-top.jpg">
+
+        <h3>Congrats, you've scored 100 Samsung Rewards points!</h3>
+        <p class="note">*Limit 1 per user</p>
+        <p class="first">You can redeem and use them at the Galaxy Store.</p>
+        <p class="last">Enjoy Samsung Internet News!</p>
+
       </div>
       <div class="nie pimg">
-        <img src="popups/popup-2-top.jpg">
+
+        <h3 class="nie">We're sorry, it looks like you're not eligible for the Rewards points.</h3>
+
+        <p class="nie only">But you can still enjoy Samsung Internet News.</p>
+
       </div>
-
-      <!--<h3 class="ie">Congrats, you've scored 100 Samsung Rewards points!</h3>
-
-      <h3 class="nie">We're sorry, it looks like you're not eligible for the Rewards points.</h3>
-
-      <p class="ie">You can redeem and use them at Galaxy Store.</p>
-      <p class="ie">Enjoy Samsung Internet News!</p>
-      <p class="nie">But you can still enjoy Samsung Internet News.</p>-->
 
       <div class="button" id="read-news-btn">
-        <img src="popups/CTA-01.jpg">
+        <p>Read News</p>
       </div>
       <div class="button ie" id="redeem-btn">
-        <img src="popups/CTA-02.jpg">
+        <p>Redeem Points</p>
       </div>
 
     </div>
